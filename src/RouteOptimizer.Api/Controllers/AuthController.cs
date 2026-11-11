@@ -62,7 +62,7 @@ public sealed class AuthController(
 
         var token = await accessTokenService.CreateAsync(user, cancellationToken);
         var response = new AuthResponse(token.Value, "Bearer", token.ExpiresAtUtc);
-        return CreatedAtAction(nameof(GetCurrentUser), routeValues: null, value: response);
+        return StatusCode(StatusCodes.Status201Created, response);
     }
 
     [HttpPost("login")]
