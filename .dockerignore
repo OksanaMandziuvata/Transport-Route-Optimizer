@@ -3,5 +3,8 @@
 .git/
 .vs/
 .idea/
+.env
+.env.*
+certs/
 node_modules/
 dist/
