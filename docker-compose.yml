@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_DB: route_optimizer
       POSTGRES_USER: route_optimizer
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_dev_password}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the environment or .env file}
     ports:
       - "5432:5432"
     volumes:
@@ -22,7 +22,7 @@ services:
     command: ["--migrate"]
     environment:
       ASPNETCORE_ENVIRONMENT: Production
-      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=route_optimizer;Username=route_optimizer;Password=${POSTGRES_PASSWORD:-local_dev_password}
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=route_optimizer;Username=route_optimizer;Password=${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the environment or .env file}
       Jwt__Issuer: RouteOptimizer
       Jwt__Audience: RouteOptimizer.Client
       Jwt__SigningKey: ${JWT_SIGNING_KEY:?Set JWT_SIGNING_KEY in the environment or .env file}
@@ -38,7 +38,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ROUTE_OPTIMIZER_INSTANCE: api1
-      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=route_optimizer;Username=route_optimizer;Password=${POSTGRES_PASSWORD:-local_dev_password}
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=route_optimizer;Username=route_optimizer;Password=${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the environment or .env file}
       Jwt__Issuer: RouteOptimizer
       Jwt__Audience: RouteOptimizer.Client
       Jwt__SigningKey: ${JWT_SIGNING_KEY:?Set JWT_SIGNING_KEY in the environment or .env file}
@@ -53,7 +53,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ROUTE_OPTIMIZER_INSTANCE: api2
-      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=route_optimizer;Username=route_optimizer;Password=${POSTGRES_PASSWORD:-local_dev_password}
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=route_optimizer;Username=route_optimizer;Password=${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the environment or .env file}
       Jwt__Issuer: RouteOptimizer
       Jwt__Audience: RouteOptimizer.Client
       Jwt__SigningKey: ${JWT_SIGNING_KEY:?Set JWT_SIGNING_KEY in the environment or .env file}
